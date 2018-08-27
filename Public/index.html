@@ -9,8 +9,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <style type="text/css">
       .ver1 {
-        background-color: rgb(200, 200, 200);
         border: 3px solid rgb(200, 255, 255);
+      }
+      section, section.ver1 {
+        background-color: white;
+        border: 3px solid rgb(40,100,40);
+      }
+
+      section h2{
+        font-size: 12pt;
+        color: #999;
+        text-align:left;
+        text-transform: uppercase;
+      }
+      .data{
+        font-size: 22pt;
+        color:rgb(0, 143, 0);
+      }
+      .label{
+        font-size: 10pt;
+        color: #ccc;
+        text-transform: capitalize;
       }
     </style>
     <title>Project Dashboard</title>
@@ -19,29 +38,39 @@
     <div class="container-fluid">
       <h1>Project Name</h1>
       <div class="row">
-        <div class="col placeholder">
+        <div class="col ver1">
           Completion %
         </div>
 
-        <div class="col placeholder">
-          Due date | days remaining
-        </div>
+        <section class="col ver1">
+          <h2> Target Date</h2>
+          <div class="row">
+            <div class="col">
+              <span class="label">Date:</span>
+              <span class="data">11/1/18:</span>
+            </div>
+            <div>
+              <span class="label">Days Remaining</span>
+              <span class="data">11</span>
+            </div>
+          </div>
+        </section>
 
-        <div class="col placeholder">
+        <div class="col ver1">
           Status
         </div>
       </div>
 
       <div class="row">
-        <div class="col placeholder" style="height:150px">
+        <div class="col ver1" style="height:150px">
           Budget chart location.
         </div>
 
-        <div class="col placeholder" style="height:150px">
+        <div class="col ver1" style="height:150px">
           Burndown chart location.
         </div>
 
-        <div class="col placeholder" style="height:150px">
+        <div class="col ver1" style="height:150px">
           Effort chart location.
         </div>
       </div>
