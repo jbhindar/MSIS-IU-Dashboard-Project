@@ -7,34 +7,12 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <style type="text/css">
-      .ver1 {
-        border: 3px solid rgb(200, 255, 255);
-      }
-      section, section.ver1 {
-        background-color: white;
-        border: 3px solid rgb(40,100,40);
-      }
+    <link rel="stylesheet" href="CSS/dashboard.css"
 
-      section h2{
-        font-size: 12pt;
-        color: #999;
-        text-align:left;
-        text-transform: uppercase;
-      }
-      .data{
-        font-size: 22pt;
-        color:rgb(0, 143, 0);
-      }
-      .label{
-        font-size: 10pt;
-        color: #ccc;
-        text-transform: capitalize;
-      }
-    </style>
     <title>Project Dashboard</title>
   </head>
   <body>
+
     <div class="container-fluid">
       <h1>Project Name</h1>
       <div class="row">
@@ -42,16 +20,15 @@
           Completion %
         </div>
 
-        <section class="col ver1">
-          <h2> Target Date</h2>
+        <section class="col">
           <div class="row">
             <div class="col">
-              <span class="label">Date:</span>
-              <span class="data">11/1/18:</span>
+              <h2>Due Date:</h2>
+              <div class="data">3 Nov 2018</div>
             </div>
-            <div>
-              <span class="label">Days Remaining</span>
-              <span class="data">11</span>
+            <div class="col">
+              <h2>Days Remaining</h2>
+              <div class="data">11</div>
             </div>
           </div>
         </section>
@@ -76,58 +53,76 @@
       </div>
 
       <div class="row">
-        <table class="table table-striped table-sm">
+        <table id="taskTable" class="table table-striped table-sm">
           <thead>
             <tr>
-              <th>
-                Task
-              </th>
-
-              <th>
-                Size
-              </th>
-
-              <th>
-                Team Name
-              </th>
+              <th>&nbsp;</th>
+              <th>Task</th>
+              <th>Type</th>
+              <th>Size</th>
+              <th>Assigned Team</th>
+              <th>Status</th>
+              <th>Started</th>
+              <th>Hrs</th>
+              <th>% Complete</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>
-                Create a Dashboard
-              </td>
-
-              <td>
-                Large
-              </td>
-
-              <td>
-                Avengers
-              </td>
+              <td></td>
+              <td>Create a Dashboard</td>
+              <td>Story</td>
+              <td>M</td>
+              <td>Noble Carrots</td>
+              <td>Started</td>
+              <td>2018-08-25</td>
+              <td>9</td>
+              <td>95%</td>
             </tr>
 
             <tr>
-              <td>
-                Build Charts
-              </td>
+              <td></td>
+              <td>Update Unit Tests</td>
+              <td>Story</td>
+              <td>L</td>
+              <td>MS Why S</td>
+              <td>Closed</td>
+              <td>2018-07-1</td>
+              <td>40</td>
+              <td>100%</td>
+            </tr>
 
-              <td>
-                Medium
-              </td>
-
-              <td>
-                Justice League
-              </td>
+            <tr>
+              <td></td>
+              <td>Create a Dashboard</td>
+              <td>Epic</td>
+              <td>XL</td>
+              <td>California Dream</td>
+              <td>Open</td>
+              <td></td>
+              <td>4</td>
+              <td>0%</td>
             </tr>
 
           </tbody>
-
         </table>
 
       </div>
-
     </div>
+    <script src="js/tablesort.min.js"></script>
+    <script>
+      // Tablesort plugin from http://tristen.ca/tablesort/demo/
+      Tablesort.extend('tshirt', function(item) {
+        // Regular expression to test against.
+        return /^X?S|M|X?L|2XL$/.test(item);
+      }, function(a, b) {
+        // Custom sort functionality goes here.
+        // e.g var n = (a > b) ? -1 : 1;
+        var sizes = ['XS', 'S', 'M', 'L', 'XL', '2XL'];
+        return sizes.indexOf(b) - sizes.indexOf(a);
+      });
+      new Tablesort(document.getElementById('taskTable'));
+    </script>
   </body>
 </html>
