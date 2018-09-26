@@ -74,7 +74,7 @@ var dashboardApp = new Vue({
       })
     },
     gottoTask(tid) {
-      window.location = 'task.html?taskID='+tid;
+      window.location = 'task.html?taskId='+tid;
     }
   },
   created () {
