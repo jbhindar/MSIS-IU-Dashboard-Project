@@ -12,18 +12,18 @@ CREATE TABLE Work (
 
 DROP TABLE IF EXISTS Teams;
 CREATE TABLE Teams (
-  team_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   name VARCHAR(31) NOT NULL,
   hourly_rate DECIMAL(6,2) NOT NULL
 );
 
-INSERT INTO Teams (team_id, name, hourly_rate)
+INSERT INTO Teams (id, name, hourly_rate)
 VALUES (1, 'California Dream', 90);
-INSERT INTO Teams (team_id, name, hourly_rate)
+INSERT INTO Teams (id, name, hourly_rate)
 VALUES (2, 'Noble Carrots', 100);
-INSERT INTO Teams (team_id, name, hourly_rate)
+INSERT INTO Teams (id, name, hourly_rate)
 VALUES (3, 'MS Why S', 80);
-INSERT INTO Teams (team_id, name, hourly_rate)
+INSERT INTO Teams (id, name, hourly_rate)
 VALUES (4, 'Luke\'s Parents', 90);
 
 INSERT INTO Work (id, team_id, task_id, start_date, hours, completion_estimate)
