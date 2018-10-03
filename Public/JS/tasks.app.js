@@ -44,7 +44,7 @@ var tasksApp = new Vue({
       console.log(s);
 
       // POST to remote server
-      fetch('api/work.php', {
+      fetch('API/work.php', {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json; charset=utf-8"
@@ -100,7 +100,7 @@ var tasksApp = new Vue({
 
     // TODO: Fetch task-specific data
     // fetch('api/task?id=4')
-    fetch('api/work.php?taskId='+taskId)
+    fetch('API/work.php?taskId='+taskId)
     .then( response => response.json() )
     .then( json => {tasksApp.work = json} )
     .catch( err => {
@@ -109,7 +109,7 @@ var tasksApp = new Vue({
     })
 
     // Fetch all teams, for the form
-    fetch('api/team.php')
+    fetch('API/team.php')
     .then( response => response.json() )
     .then( json => {tasksApp.teamList = json} )
     .catch( err => {
