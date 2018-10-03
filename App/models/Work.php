@@ -23,6 +23,25 @@ class Work
     $this->stop = $date->format('Y-m-d H:i:s');
     $this->completion_estimate = intval($row['completion_estimate']);
   }
+  public static function create(){
+    $db = new PDO(DB_SERVER, DB_USER, DB_PW);
+    // 2. Prepare the query
+    $sql = 'INSERT INTO Work (task_id, team_id, start_date, hours, completion_estimate) VALUES (?,?,?,?,?)';
+    $statement = $db->prepare($sql);
+    $success = $statement->execute([
+      $this->task_id,
+      $this->team_id,
+      $this->start,
+      $this->hours,
+      $this->completion_estimate
+    ]);
+
+    if (!$success){
+      die ('Bad SQL on insert');
+    }
+
+    $this->id = $db->lastInsertID();
+  }
   public static function getWorkByTaskId(int $taskId) {
     // 1. Connect to the database
     $db = new PDO(DB_SERVER, DB_USER, DB_PW);
@@ -42,24 +61,5 @@ class Work
     }
     // 4.b. return the array of work objects
     return $arr;
-  }
-  public static function create(){
-    $db = new PDO(DB_SERVER, DB_USER, DB_PW);
-    // 2. Prepare the query
-    $sql = 'INSERT INTO Work (task_id, team_id, start_date, hours, completion_estimate) VALUES (?,?,?,?,?)';
-    $statement = $db->prepare($sql);
-    $success = $statement->execute([
-      $this->task_id,
-      $this->team_id,
-      $this->start,
-      $this->hours,
-      $this->completion_estimate
-    ]);
-
-    if (!$success){
-      die ('Bad SQL on insert');
-    }
-
-    $this->id = $db->lastInsertID();
   }
 }

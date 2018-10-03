@@ -30,7 +30,7 @@ var tasksApp = new Vue({
 
       // TODO: Check validity in a better way
 
-      if (this.workSpan < 0 ) {
+      if (this.workSpan <= 0 ) {
         console.error('Hours must be positive')
       }
       this.workForm.task_id = this.taskId;
