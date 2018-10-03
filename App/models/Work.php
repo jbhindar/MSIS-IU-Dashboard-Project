@@ -26,7 +26,7 @@ class Work
   public static function create(){
     $db = new PDO(DB_SERVER, DB_USER, DB_PW);
     // 2. Prepare the query
-    $sql = 'INSERT INTO Work (task_id, team_id, start_date, hours, completion_estimate) VALUES (?,?,?,?,?)';
+    $sql = 'INSERT Work (task_id, team_id, start_date, hours, completion_estimate) VALUES (?,?,?,?,?)';
     $statement = $db->prepare($sql);
     $success = $statement->execute([
       $this->task_id,
@@ -35,11 +35,6 @@ class Work
       $this->hours,
       $this->completion_estimate
     ]);
-
-    if (!$success){
-      die ('Bad SQL on insert');
-    }
-
     $this->id = $db->lastInsertID();
   }
   public static function getWorkByTaskId(int $taskId) {
