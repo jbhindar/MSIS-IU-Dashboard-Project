@@ -20,7 +20,7 @@ var tasksApp = new Vue({
   },
   computed: {
     workSpan () {
-      return moment(this.workForm.stop)
+      return moment(this.workForm.stop + ' ' + this.workForm.stop_time)
              .diff(moment(this.workForm.start), 'hours', true)
              .toFixed(1);
     }
@@ -29,18 +29,17 @@ var tasksApp = new Vue({
     handleWorkForm(e) {
 
       // TODO: Check validity in a better way
-      if (this.workSpan <= 0) {
-        console.error('Cannot submit, invalid values');
-        return;
-      }
 
+      if (this.workSpan < 0 ) {
+        console.error('Hours must be positive')
+      }
+      this.workForm.task_id = this.taskId;
       this.workForm.start_date = this.workForm.start + ' ' + this.workForm.start_time;
       this.workForm.hours = this.workSpan;
       // Stop field not used by the API
       // this.workForm.stop_date = this.workForm.stop + ' ' + this.workForm.stop_time;
 
       const s = JSON.stringify(this.workForm);
-
       console.log(s);
 
       // POST to remote server
