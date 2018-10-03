@@ -1,4 +1,4 @@
 <?php
-const DB_USER = 'root';
-const DB_PW   = 'unchanted2';
-const DB_SERVER = 'mysql:host=localhost;dbname=dashboard';
+const DB_USER = 'username';
+const DB_PW   = 'hello';
+const DB_SERVER = 'dashboard_db';

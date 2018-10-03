@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'
   $_POST = json_decode(file_get_contents('php://input'), true);
 }
 
-require 'environment.default.php';
+require 'environment.php';
 /** MODELS **/
 require 'models/Work.php';
 
