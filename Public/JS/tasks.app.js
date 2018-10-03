@@ -21,7 +21,7 @@ var tasksApp = new Vue({
   computed: {
     workSpan () {
       return moment(this.workForm.stop + ' ' + this.workForm.stop_time)
-             .diff(moment(this.workForm.start), 'hours', true)
+             .diff(moment(this.workForm.start + ' ' + this.workForm.start_time), 'hours', true)
              .toFixed(1);
     }
   },
