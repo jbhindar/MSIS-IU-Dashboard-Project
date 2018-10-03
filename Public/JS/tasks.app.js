@@ -29,21 +29,22 @@ var tasksApp = new Vue({
     handleWorkForm(e) {
 
       // TODO: Check validity in a better way
-
-      if (this.workSpan <= 0 ) {
-        console.error('Hours must be positive')
+      if (this.workSpan <= 0) {
+        console.error('Cannot submit, invalid values');
+        return;
       }
-      //this.workForm.task_id = this.taskId;
+
       this.workForm.start_date = this.workForm.start + ' ' + this.workForm.start_time;
       this.workForm.hours = this.workSpan;
       // Stop field not used by the API
       // this.workForm.stop_date = this.workForm.stop + ' ' + this.workForm.stop_time;
 
       const s = JSON.stringify(this.workForm);
+
       console.log(s);
 
       // POST to remote server
-      fetch('API/work.php', {
+      fetch('api/work.php', {
         method: "POST", // *GET, POST, PUT, DELETE, etc.
         headers: {
             "Content-Type": "application/json; charset=utf-8"
@@ -99,7 +100,7 @@ var tasksApp = new Vue({
 
     // TODO: Fetch task-specific data
     // fetch('api/task?id=4')
-    fetch('API/work.php?taskId='+taskId)
+    fetch('api/work.php?taskId='+taskId)
     .then( response => response.json() )
     .then( json => {tasksApp.work = json} )
     .catch( err => {
@@ -108,7 +109,7 @@ var tasksApp = new Vue({
     })
 
     // Fetch all teams, for the form
-    fetch('API/team.php')
+    fetch('api/team.php')
     .then( response => response.json() )
     .then( json => {tasksApp.teamList = json} )
     .catch( err => {
