@@ -23,10 +23,10 @@ class Work
     $this->stop = $date->format('Y-m-d H:i:s');
     $this->completion_estimate = intval($row['completion_estimate']);
   }
-  public static function create(){
+  public function create() {
     $db = new PDO(DB_SERVER, DB_USER, DB_PW);
-    // 2. Prepare the query
-    $sql = 'INSERT Work (task_id, team_id, start_date, hours, completion_estimate) VALUES (?,?,?,?,?)';
+    $sql = 'INSERT Work (task_id, team_id, start_date, hours, completion_estimate)
+            VALUES (?, ?, ?, ?, ?)';
     $statement = $db->prepare($sql);
     $success = $statement->execute([
       $this->task_id,
@@ -35,7 +35,7 @@ class Work
       $this->hours,
       $this->completion_estimate
     ]);
-    $this->id = $db->lastInsertID();
+    $this->id = $db->lastInsertId();
   }
   public static function getWorkByTaskId(int $taskId) {
     // 1. Connect to the database
