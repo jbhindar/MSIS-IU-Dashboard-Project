@@ -7,16 +7,25 @@ section {
   text-align:center;
 }
 
-section h2{
-  font-size: 12pt;
-  color: #999;
+section h2, .highcharts-title {
+  font-size: 10pt;
   text-transform: uppercase;
+  color: #999;
+  margin-top: 1em;
+  margin-bottom: 0;;
 }
+
 section .data{
   font-size: 22pt;
   color:rgb(35, 95, 163);
   font-weight: bold;
 }
+
+#effortChart {
+  height: 250px;
+
+}
+
 .label{
   font-size: 10pt;
   color: #ccc;

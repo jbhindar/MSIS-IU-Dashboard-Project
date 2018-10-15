@@ -52,8 +52,8 @@
         <div class="col placeholder" style="height:200px">
           Burndown chart goes here.
         </div>
-        <div class="col placeholder">
-          Effort chart goes here.
+        <div class="col">
+          <div id="effortChart"></div>
         </div>
       </div>
 
@@ -95,6 +95,9 @@
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- Load Highcharts -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- My Vue Controller file: -->
     <script src="JS/dashboard.app.js"></script>
     <script src="JS/tablesort.min.js"></script>
     <script>
